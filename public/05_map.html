@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_1a8504d0082d0430871307e734ebd9a2 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+</head>
+<body>
+    
+    
+    <div style="position:fixed;bottom:30px;left:30px;z-index:1000;
+                background:white;padding:12px 16px;border-radius:8px;
+                box-shadow:0 2px 8px rgba(0,0,0,0.2);font-family:Malgun Gothic,sans-serif;font-size:13px;">
+      <b style="font-size:14px">상권 활력 등급</b><br>
+      <span style="color:#1D9E75">● 활발</span> &nbsp;
+      <span style="color:#5DCAA5">● 양호</span> &nbsp;
+      <span style="color:#FAC775">● 보통</span> &nbsp;
+      <span style="color:#EF9F27">● 주의</span> &nbsp;
+      <span style="color:#E24B4A">● 위험</span>
+    </div>
+    
+    
+    <div style="position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:1000;
+                background:white;padding:10px 20px;border-radius:8px;
+                box-shadow:0 2px 8px rgba(0,0,0,0.15);
+                font-family:Malgun Gothic,sans-serif;font-size:15px;font-weight:bold;">
+      성남시 행정동별 상권 활력 지수 지도
+    </div>
+    
+    
+            <div class="folium-map" id="map_1a8504d0082d0430871307e734ebd9a2" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_1a8504d0082d0430871307e734ebd9a2 = L.map(
+                "map_1a8504d0082d0430871307e734ebd9a2",
+                {
+                    center: [37.415, 127.127],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_d561b385f9ddedf19380be3a617d89fd = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_d561b385f9ddedf19380be3a617d89fd.addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+            var circle_marker_151e90d72742f019a9fef2201b285538 = L.circleMarker(
+                [37.386, 127.1148],
+                {"bubblingMouseEvents": true, "color": "#5DCAA5", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5DCAA5", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 23.326135915468114, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_1ae4154d9a2ed22d733c2d9f4ab5ee15 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_2e31a881be6d06b80140b813b218a2d7 = $(`<div id="html_2e31a881be6d06b80140b813b218a2d7" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">서현1동</b>           <span style="float:right;background:#5DCAA5;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">양호</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>75.5</b></td></tr>             <tr><td>생존율</td><td>97.0%</td></tr>             <tr><td>유동인구</td><td>7,329명</td></tr>             <tr><td>총 가맹점</td><td>9,921개</td></tr>             <tr><td>전입인구</td><td>805명</td></tr>             <tr><td>평균소득</td><td>546천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_1ae4154d9a2ed22d733c2d9f4ab5ee15.setContent(html_2e31a881be6d06b80140b813b218a2d7);
+            
+        
+
+        circle_marker_151e90d72742f019a9fef2201b285538.bindPopup(popup_1ae4154d9a2ed22d733c2d9f4ab5ee15)
+        ;
+
+        
+    
+    
+            circle_marker_151e90d72742f019a9fef2201b285538.bindTooltip(
+                `<div>
+                     서현1동 | 양호 (75.5점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f1f32f35538ce90aba2ae49044cb26b9 = L.circleMarker(
+                [37.3815, 127.1193],
+                {"bubblingMouseEvents": true, "color": "#5DCAA5", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5DCAA5", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22.840965919699087, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_fe0b79339b5619a4ce06cb65ef87ba7c = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_86cffe26d2782f74db89067507c045f8 = $(`<div id="html_86cffe26d2782f74db89067507c045f8" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">수내1동</b>           <span style="float:right;background:#5DCAA5;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">양호</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>72.3</b></td></tr>             <tr><td>생존율</td><td>96.6%</td></tr>             <tr><td>유동인구</td><td>7,730명</td></tr>             <tr><td>총 가맹점</td><td>10,354개</td></tr>             <tr><td>전입인구</td><td>1,160명</td></tr>             <tr><td>평균소득</td><td>572천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_fe0b79339b5619a4ce06cb65ef87ba7c.setContent(html_86cffe26d2782f74db89067507c045f8);
+            
+        
+
+        circle_marker_f1f32f35538ce90aba2ae49044cb26b9.bindPopup(popup_fe0b79339b5619a4ce06cb65ef87ba7c)
+        ;
+
+        
+    
+    
+            circle_marker_f1f32f35538ce90aba2ae49044cb26b9.bindTooltip(
+                `<div>
+                     수내1동 | 양호 (72.3점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_19dbba9cffa097d3381f9f7d65e39304 = L.circleMarker(
+                [37.378, 127.108],
+                {"bubblingMouseEvents": true, "color": "#5DCAA5", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5DCAA5", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.77267511848169, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_6d0f59b2f6c39ea57c221baf2dc6070b = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_9326a3ab04fc963742e28539b196c5bd = $(`<div id="html_9326a3ab04fc963742e28539b196c5bd" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">백현동</b>           <span style="float:right;background:#5DCAA5;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">양호</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>65.2</b></td></tr>             <tr><td>생존율</td><td>96.5%</td></tr>             <tr><td>유동인구</td><td>7,810명</td></tr>             <tr><td>총 가맹점</td><td>10,171개</td></tr>             <tr><td>전입인구</td><td>1,042명</td></tr>             <tr><td>평균소득</td><td>537천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_6d0f59b2f6c39ea57c221baf2dc6070b.setContent(html_9326a3ab04fc963742e28539b196c5bd);
+            
+        
+
+        circle_marker_19dbba9cffa097d3381f9f7d65e39304.bindPopup(popup_6d0f59b2f6c39ea57c221baf2dc6070b)
+        ;
+
+        
+    
+    
+            circle_marker_19dbba9cffa097d3381f9f7d65e39304.bindTooltip(
+                `<div>
+                     백현동 | 양호 (65.2점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f7d7ab6eb95b08074052e266fa767a8b = L.circleMarker(
+                [37.3998, 127.1068],
+                {"bubblingMouseEvents": true, "color": "#5DCAA5", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5DCAA5", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.622271922440813, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_f1d5dec29c4acf21d98f50edfe9e367b = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_d07f7d9b754229ab25f95286dcad4244 = $(`<div id="html_d07f7d9b754229ab25f95286dcad4244" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">삼평동</b>           <span style="float:right;background:#5DCAA5;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">양호</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>64.1</b></td></tr>             <tr><td>생존율</td><td>96.4%</td></tr>             <tr><td>유동인구</td><td>8,024명</td></tr>             <tr><td>총 가맹점</td><td>10,032개</td></tr>             <tr><td>전입인구</td><td>1,125명</td></tr>             <tr><td>평균소득</td><td>505천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_f1d5dec29c4acf21d98f50edfe9e367b.setContent(html_d07f7d9b754229ab25f95286dcad4244);
+            
+        
+
+        circle_marker_f7d7ab6eb95b08074052e266fa767a8b.bindPopup(popup_f1d5dec29c4acf21d98f50edfe9e367b)
+        ;
+
+        
+    
+    
+            circle_marker_f7d7ab6eb95b08074052e266fa767a8b.bindTooltip(
+                `<div>
+                     삼평동 | 양호 (64.1점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_85c4452097b0d573514cddb769ee4281 = L.circleMarker(
+                [37.3921, 127.1105],
+                {"bubblingMouseEvents": true, "color": "#5DCAA5", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5DCAA5", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.350326370510956, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_f04f7e5778f0aa6b0794a087a7a8a495 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_b6bfd91efae3a8edec6963f262b687fa = $(`<div id="html_b6bfd91efae3a8edec6963f262b687fa" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">판교동</b>           <span style="float:right;background:#5DCAA5;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">양호</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>62.3</b></td></tr>             <tr><td>생존율</td><td>96.5%</td></tr>             <tr><td>유동인구</td><td>8,108명</td></tr>             <tr><td>총 가맹점</td><td>9,946개</td></tr>             <tr><td>전입인구</td><td>722명</td></tr>             <tr><td>평균소득</td><td>576천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_f04f7e5778f0aa6b0794a087a7a8a495.setContent(html_b6bfd91efae3a8edec6963f262b687fa);
+            
+        
+
+        circle_marker_85c4452097b0d573514cddb769ee4281.bindPopup(popup_f04f7e5778f0aa6b0794a087a7a8a495)
+        ;
+
+        
+    
+    
+            circle_marker_85c4452097b0d573514cddb769ee4281.bindTooltip(
+                `<div>
+                     판교동 | 양호 (62.3점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_dfffd24dd219b5c5b5f2b431c6158859 = L.circleMarker(
+                [37.38, 127.121],
+                {"bubblingMouseEvents": true, "color": "#FAC775", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FAC775", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.897840029677738, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_7d56172cc29c247c65990152a358d2d2 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_149c7314d24076ef40775e443d965590 = $(`<div id="html_149c7314d24076ef40775e443d965590" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">수내2동</b>           <span style="float:right;background:#FAC775;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">보통</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>59.3</b></td></tr>             <tr><td>생존율</td><td>96.4%</td></tr>             <tr><td>유동인구</td><td>7,589명</td></tr>             <tr><td>총 가맹점</td><td>10,049개</td></tr>             <tr><td>전입인구</td><td>919명</td></tr>             <tr><td>평균소득</td><td>533천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_7d56172cc29c247c65990152a358d2d2.setContent(html_149c7314d24076ef40775e443d965590);
+            
+        
+
+        circle_marker_dfffd24dd219b5c5b5f2b431c6158859.bindPopup(popup_7d56172cc29c247c65990152a358d2d2)
+        ;
+
+        
+    
+    
+            circle_marker_dfffd24dd219b5c5b5f2b431c6158859.bindTooltip(
+                `<div>
+                     수내2동 | 보통 (59.3점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c027f20d7d227c0b736058d27e5c4163 = L.circleMarker(
+                [37.4088, 127.131],
+                {"bubblingMouseEvents": true, "color": "#FAC775", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FAC775", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.66304985575016, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_28ad6a054d25b011af886075cc816427 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_7146ae67cbc0a3ee9a999a1b25ee26d3 = $(`<div id="html_7146ae67cbc0a3ee9a999a1b25ee26d3" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">야탑2동</b>           <span style="float:right;background:#FAC775;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">보통</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>57.8</b></td></tr>             <tr><td>생존율</td><td>96.7%</td></tr>             <tr><td>유동인구</td><td>2,991명</td></tr>             <tr><td>총 가맹점</td><td>9,751개</td></tr>             <tr><td>전입인구</td><td>1,304명</td></tr>             <tr><td>평균소득</td><td>557천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_28ad6a054d25b011af886075cc816427.setContent(html_7146ae67cbc0a3ee9a999a1b25ee26d3);
+            
+        
+
+        circle_marker_c027f20d7d227c0b736058d27e5c4163.bindPopup(popup_28ad6a054d25b011af886075cc816427)
+        ;
+
+        
+    
+    
+            circle_marker_c027f20d7d227c0b736058d27e5c4163.bindTooltip(
+                `<div>
+                     야탑2동 | 보통 (57.8점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4ebe68ae07f906492a98faf14deea46c = L.circleMarker(
+                [37.4072, 127.1278],
+                {"bubblingMouseEvents": true, "color": "#FAC775", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FAC775", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.567592291050442, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_5b5cbfaac89435dab41b7adce75ca0e8 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_51fbe30a461e462733552c6dc1362567 = $(`<div id="html_51fbe30a461e462733552c6dc1362567" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">야탑1동</b>           <span style="float:right;background:#FAC775;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">보통</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>57.1</b></td></tr>             <tr><td>생존율</td><td>96.8%</td></tr>             <tr><td>유동인구</td><td>3,013명</td></tr>             <tr><td>총 가맹점</td><td>10,156개</td></tr>             <tr><td>전입인구</td><td>1,268명</td></tr>             <tr><td>평균소득</td><td>514천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_5b5cbfaac89435dab41b7adce75ca0e8.setContent(html_51fbe30a461e462733552c6dc1362567);
+            
+        
+
+        circle_marker_4ebe68ae07f906492a98faf14deea46c.bindPopup(popup_5b5cbfaac89435dab41b7adce75ca0e8)
+        ;
+
+        
+    
+    
+            circle_marker_4ebe68ae07f906492a98faf14deea46c.bindTooltip(
+                `<div>
+                     야탑1동 | 보통 (57.1점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ceb7633ec42426763bd18517fb42c782 = L.circleMarker(
+                [37.449, 127.13],
+                {"bubblingMouseEvents": true, "color": "#FAC775", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FAC775", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.912315489975185, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_f05847e4a9e19ec7932863827cdfdc2e = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_cd0cff99d6713f2ec82070cf51b18250 = $(`<div id="html_cd0cff99d6713f2ec82070cf51b18250" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">복정동</b>           <span style="float:right;background:#FAC775;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">보통</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>52.7</b></td></tr>             <tr><td>생존율</td><td>97.0%</td></tr>             <tr><td>유동인구</td><td>1,551명</td></tr>             <tr><td>총 가맹점</td><td>4,773개</td></tr>             <tr><td>전입인구</td><td>1,305명</td></tr>             <tr><td>평균소득</td><td>382천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_f05847e4a9e19ec7932863827cdfdc2e.setContent(html_cd0cff99d6713f2ec82070cf51b18250);
+            
+        
+
+        circle_marker_ceb7633ec42426763bd18517fb42c782.bindPopup(popup_f05847e4a9e19ec7932863827cdfdc2e)
+        ;
+
+        
+    
+    
+            circle_marker_ceb7633ec42426763bd18517fb42c782.bindTooltip(
+                `<div>
+                     복정동 | 보통 (52.7점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3918095f9a8bb3d3d5d84ea52d982781 = L.circleMarker(
+                [37.377, 127.116],
+                {"bubblingMouseEvents": true, "color": "#FAC775", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FAC775", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.374437776053643, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_e662e4360204d7361a4a19560d3df595 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_6f423b44ffd121de1c0ada73abe2cf72 = $(`<div id="html_6f423b44ffd121de1c0ada73abe2cf72" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">정자2동</b>           <span style="float:right;background:#FAC775;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">보통</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>49.2</b></td></tr>             <tr><td>생존율</td><td>96.5%</td></tr>             <tr><td>유동인구</td><td>2,995명</td></tr>             <tr><td>총 가맹점</td><td>9,901개</td></tr>             <tr><td>전입인구</td><td>1,213명</td></tr>             <tr><td>평균소득</td><td>546천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_e662e4360204d7361a4a19560d3df595.setContent(html_6f423b44ffd121de1c0ada73abe2cf72);
+            
+        
+
+        circle_marker_3918095f9a8bb3d3d5d84ea52d982781.bindPopup(popup_e662e4360204d7361a4a19560d3df595)
+        ;
+
+        
+    
+    
+            circle_marker_3918095f9a8bb3d3d5d84ea52d982781.bindTooltip(
+                `<div>
+                     정자2동 | 보통 (49.2점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_823a5a6d3712499553dc18973f01ceb4 = L.circleMarker(
+                [37.383, 127.126],
+                {"bubblingMouseEvents": true, "color": "#FAC775", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FAC775", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.265896886036007, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_873dc07cb956bbafe4f2b3c5219c5752 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_27c6cd384999ec39c306ccec4d94573f = $(`<div id="html_27c6cd384999ec39c306ccec4d94573f" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">금곡동</b>           <span style="float:right;background:#FAC775;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">보통</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>48.4</b></td></tr>             <tr><td>생존율</td><td>96.6%</td></tr>             <tr><td>유동인구</td><td>3,044명</td></tr>             <tr><td>총 가맹점</td><td>9,830개</td></tr>             <tr><td>전입인구</td><td>1,110명</td></tr>             <tr><td>평균소득</td><td>537천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_873dc07cb956bbafe4f2b3c5219c5752.setContent(html_27c6cd384999ec39c306ccec4d94573f);
+            
+        
+
+        circle_marker_823a5a6d3712499553dc18973f01ceb4.bindPopup(popup_873dc07cb956bbafe4f2b3c5219c5752)
+        ;
+
+        
+    
+    
+            circle_marker_823a5a6d3712499553dc18973f01ceb4.bindTooltip(
+                `<div>
+                     금곡동 | 보통 (48.4점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4a12831baf51d3c2c2654366a0e4acd4 = L.circleMarker(
+                [37.3755, 127.118],
+                {"bubblingMouseEvents": true, "color": "#FAC775", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FAC775", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.905034714962298, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_6ca8936f3c4e8ec9da8af9262b2a4c90 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_c330933fcbfa401eaf63b9a603f332e7 = $(`<div id="html_c330933fcbfa401eaf63b9a603f332e7" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">정자3동</b>           <span style="float:right;background:#FAC775;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">보통</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>46.0</b></td></tr>             <tr><td>생존율</td><td>96.7%</td></tr>             <tr><td>유동인구</td><td>2,888명</td></tr>             <tr><td>총 가맹점</td><td>10,366개</td></tr>             <tr><td>전입인구</td><td>936명</td></tr>             <tr><td>평균소득</td><td>543천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_6ca8936f3c4e8ec9da8af9262b2a4c90.setContent(html_c330933fcbfa401eaf63b9a603f332e7);
+            
+        
+
+        circle_marker_4a12831baf51d3c2c2654366a0e4acd4.bindPopup(popup_6ca8936f3c4e8ec9da8af9262b2a4c90)
+        ;
+
+        
+    
+    
+            circle_marker_4a12831baf51d3c2c2654366a0e4acd4.bindTooltip(
+                `<div>
+                     정자3동 | 보통 (46.0점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0a1ca7db5886b0e2cf4fd98a475375f9 = L.circleMarker(
+                [37.452, 127.136],
+                {"bubblingMouseEvents": true, "color": "#FAC775", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FAC775", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.768137338167673, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_7517bbad08bf312a13e7cdfcf5b97861 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_25794ff512e015b90bc588776b26e268 = $(`<div id="html_25794ff512e015b90bc588776b26e268" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">성남동</b>           <span style="float:right;background:#FAC775;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">보통</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>45.1</b></td></tr>             <tr><td>생존율</td><td>96.7%</td></tr>             <tr><td>유동인구</td><td>1,443명</td></tr>             <tr><td>총 가맹점</td><td>5,095개</td></tr>             <tr><td>전입인구</td><td>956명</td></tr>             <tr><td>평균소득</td><td>365천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_7517bbad08bf312a13e7cdfcf5b97861.setContent(html_25794ff512e015b90bc588776b26e268);
+            
+        
+
+        circle_marker_0a1ca7db5886b0e2cf4fd98a475375f9.bindPopup(popup_7517bbad08bf312a13e7cdfcf5b97861)
+        ;
+
+        
+    
+    
+            circle_marker_0a1ca7db5886b0e2cf4fd98a475375f9.bindTooltip(
+                `<div>
+                     성남동 | 보통 (45.1점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d382bdcbb7cb1ebebfc4f7940d0bc771 = L.circleMarker(
+                [37.375, 127.126],
+                {"bubblingMouseEvents": true, "color": "#FAC775", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FAC775", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.610224194428508, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_59f466bf151450cf0a594e19ca948c14 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_7af319a7f995cf760bee15244c85b110 = $(`<div id="html_7af319a7f995cf760bee15244c85b110" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">구미1동</b>           <span style="float:right;background:#FAC775;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">보통</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>44.1</b></td></tr>             <tr><td>생존율</td><td>96.6%</td></tr>             <tr><td>유동인구</td><td>3,161명</td></tr>             <tr><td>총 가맹점</td><td>9,743개</td></tr>             <tr><td>전입인구</td><td>814명</td></tr>             <tr><td>평균소득</td><td>550천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_59f466bf151450cf0a594e19ca948c14.setContent(html_7af319a7f995cf760bee15244c85b110);
+            
+        
+
+        circle_marker_d382bdcbb7cb1ebebfc4f7940d0bc771.bindPopup(popup_59f466bf151450cf0a594e19ca948c14)
+        ;
+
+        
+    
+    
+            circle_marker_d382bdcbb7cb1ebebfc4f7940d0bc771.bindTooltip(
+                `<div>
+                     구미1동 | 보통 (44.1점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1dc9a17cf24b0e5ddfc32db5026900ee = L.circleMarker(
+                [37.436, 127.143],
+                {"bubblingMouseEvents": true, "color": "#FAC775", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FAC775", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.5602879838494, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_1636c901587364b3705f410d160b34fb = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_c7a005da67f05f757bc92692720de1eb = $(`<div id="html_c7a005da67f05f757bc92692720de1eb" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">수진2동</b>           <span style="float:right;background:#FAC775;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">보통</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>43.7</b></td></tr>             <tr><td>생존율</td><td>96.9%</td></tr>             <tr><td>유동인구</td><td>1,513명</td></tr>             <tr><td>총 가맹점</td><td>5,125개</td></tr>             <tr><td>전입인구</td><td>1,253명</td></tr>             <tr><td>평균소득</td><td>376천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_1636c901587364b3705f410d160b34fb.setContent(html_c7a005da67f05f757bc92692720de1eb);
+            
+        
+
+        circle_marker_1dc9a17cf24b0e5ddfc32db5026900ee.bindPopup(popup_1636c901587364b3705f410d160b34fb)
+        ;
+
+        
+    
+    
+            circle_marker_1dc9a17cf24b0e5ddfc32db5026900ee.bindTooltip(
+                `<div>
+                     수진2동 | 보통 (43.7점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_60e2cb0e542e6ca18d8fd06750cc9d51 = L.circleMarker(
+                [37.434, 127.1545],
+                {"bubblingMouseEvents": true, "color": "#FAC775", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FAC775", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.464308284923526, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_ed62c5c3626bf888d4b601f7c2daac5b = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_b6446275b2750fbdbcb779b40a4f12b4 = $(`<div id="html_b6446275b2750fbdbcb779b40a4f12b4" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">태평3동</b>           <span style="float:right;background:#FAC775;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">보통</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>43.1</b></td></tr>             <tr><td>생존율</td><td>97.0%</td></tr>             <tr><td>유동인구</td><td>1,498명</td></tr>             <tr><td>총 가맹점</td><td>4,776개</td></tr>             <tr><td>전입인구</td><td>849명</td></tr>             <tr><td>평균소득</td><td>407천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_ed62c5c3626bf888d4b601f7c2daac5b.setContent(html_b6446275b2750fbdbcb779b40a4f12b4);
+            
+        
+
+        circle_marker_60e2cb0e542e6ca18d8fd06750cc9d51.bindPopup(popup_ed62c5c3626bf888d4b601f7c2daac5b)
+        ;
+
+        
+    
+    
+            circle_marker_60e2cb0e542e6ca18d8fd06750cc9d51.bindTooltip(
+                `<div>
+                     태평3동 | 보통 (43.1점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b3eb62cb2561caa31cce681df0dc2c0d = L.circleMarker(
+                [37.3845, 127.1168],
+                {"bubblingMouseEvents": true, "color": "#FAC775", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FAC775", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.202677256753194, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_04d74eb2702c366d1552cf02b0d57a3e = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_fc6500e0214b9d02425609f843ff4569 = $(`<div id="html_fc6500e0214b9d02425609f843ff4569" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">서현2동</b>           <span style="float:right;background:#FAC775;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">보통</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>41.4</b></td></tr>             <tr><td>생존율</td><td>96.6%</td></tr>             <tr><td>유동인구</td><td>3,018명</td></tr>             <tr><td>총 가맹점</td><td>10,397개</td></tr>             <tr><td>전입인구</td><td>665명</td></tr>             <tr><td>평균소득</td><td>570천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_04d74eb2702c366d1552cf02b0d57a3e.setContent(html_fc6500e0214b9d02425609f843ff4569);
+            
+        
+
+        circle_marker_b3eb62cb2561caa31cce681df0dc2c0d.bindPopup(popup_04d74eb2702c366d1552cf02b0d57a3e)
+        ;
+
+        
+    
+    
+            circle_marker_b3eb62cb2561caa31cce681df0dc2c0d.bindTooltip(
+                `<div>
+                     서현2동 | 보통 (41.4점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d2feb1a907d3e2acb137f69e559f8b4c = L.circleMarker(
+                [37.3978, 127.113],
+                {"bubblingMouseEvents": true, "color": "#FAC775", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FAC775", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.04739492319219, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_d9cb12b41d5bad8736bf6b8f1456027b = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_f8c74660a772f6dd70a16645e2e1ef7e = $(`<div id="html_f8c74660a772f6dd70a16645e2e1ef7e" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">이매1동</b>           <span style="float:right;background:#FAC775;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">보통</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>40.3</b></td></tr>             <tr><td>생존율</td><td>96.4%</td></tr>             <tr><td>유동인구</td><td>2,990명</td></tr>             <tr><td>총 가맹점</td><td>9,581개</td></tr>             <tr><td>전입인구</td><td>933명</td></tr>             <tr><td>평균소득</td><td>530천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_d9cb12b41d5bad8736bf6b8f1456027b.setContent(html_f8c74660a772f6dd70a16645e2e1ef7e);
+            
+        
+
+        circle_marker_d2feb1a907d3e2acb137f69e559f8b4c.bindPopup(popup_d9cb12b41d5bad8736bf6b8f1456027b)
+        ;
+
+        
+    
+    
+            circle_marker_d2feb1a907d3e2acb137f69e559f8b4c.bindTooltip(
+                `<div>
+                     이매1동 | 보통 (40.3점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_81d69bb9025951eb85fb49286c7073c2 = L.circleMarker(
+                [37.377, 127.124],
+                {"bubblingMouseEvents": true, "color": "#FAC775", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FAC775", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.034276885512245, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_726e5a7822f635fd43bf8a6aea7d380a = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_33b5d37ef74d18da8f173382d6506874 = $(`<div id="html_33b5d37ef74d18da8f173382d6506874" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">구미동</b>           <span style="float:right;background:#FAC775;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">보통</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>40.2</b></td></tr>             <tr><td>생존율</td><td>96.6%</td></tr>             <tr><td>유동인구</td><td>2,982명</td></tr>             <tr><td>총 가맹점</td><td>10,070개</td></tr>             <tr><td>전입인구</td><td>622명</td></tr>             <tr><td>평균소득</td><td>539천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_726e5a7822f635fd43bf8a6aea7d380a.setContent(html_33b5d37ef74d18da8f173382d6506874);
+            
+        
+
+        circle_marker_81d69bb9025951eb85fb49286c7073c2.bindPopup(popup_726e5a7822f635fd43bf8a6aea7d380a)
+        ;
+
+        
+    
+    
+            circle_marker_81d69bb9025951eb85fb49286c7073c2.bindTooltip(
+                `<div>
+                     구미동 | 보통 (40.2점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d7af7f6a87702294d89eee344f57f8aa = L.circleMarker(
+                [37.4052, 127.131],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.96223235124085, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_2159988393b603b00888b4cbb6441b1e = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_49d2cd6fd56d6677c76dcf2d3a3b3e9f = $(`<div id="html_49d2cd6fd56d6677c76dcf2d3a3b3e9f" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">야탑3동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>39.7</b></td></tr>             <tr><td>생존율</td><td>96.6%</td></tr>             <tr><td>유동인구</td><td>3,124명</td></tr>             <tr><td>총 가맹점</td><td>10,052개</td></tr>             <tr><td>전입인구</td><td>644명</td></tr>             <tr><td>평균소득</td><td>544천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_2159988393b603b00888b4cbb6441b1e.setContent(html_49d2cd6fd56d6677c76dcf2d3a3b3e9f);
+            
+        
+
+        circle_marker_d7af7f6a87702294d89eee344f57f8aa.bindPopup(popup_2159988393b603b00888b4cbb6441b1e)
+        ;
+
+        
+    
+    
+            circle_marker_d7af7f6a87702294d89eee344f57f8aa.bindTooltip(
+                `<div>
+                     야탑3동 | 주의 (39.7점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_97bd5332966ca3406d42ece472f57f8b = L.circleMarker(
+                [37.446, 127.148],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.935774019599975, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_c7abb2acb49ddf436e9eecc3db23619a = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_8c596861875cd51efe7fd8f56c117017 = $(`<div id="html_8c596861875cd51efe7fd8f56c117017" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">양지동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>39.6</b></td></tr>             <tr><td>생존율</td><td>96.6%</td></tr>             <tr><td>유동인구</td><td>1,593명</td></tr>             <tr><td>총 가맹점</td><td>4,982개</td></tr>             <tr><td>전입인구</td><td>1,342명</td></tr>             <tr><td>평균소득</td><td>364천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_c7abb2acb49ddf436e9eecc3db23619a.setContent(html_8c596861875cd51efe7fd8f56c117017);
+            
+        
+
+        circle_marker_97bd5332966ca3406d42ece472f57f8b.bindPopup(popup_c7abb2acb49ddf436e9eecc3db23619a)
+        ;
+
+        
+    
+    
+            circle_marker_97bd5332966ca3406d42ece472f57f8b.bindTooltip(
+                `<div>
+                     양지동 | 주의 (39.6점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0476400b1cb95e5de48c6c9e88c37b31 = L.circleMarker(
+                [37.396, 127.111],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.81159247986474, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_fbdda23bbf2c462675cc0c59542484c8 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_c132baf7382afa5f74ddf2f094c015a7 = $(`<div id="html_c132baf7382afa5f74ddf2f094c015a7" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">이매2동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>38.7</b></td></tr>             <tr><td>생존율</td><td>96.5%</td></tr>             <tr><td>유동인구</td><td>3,039명</td></tr>             <tr><td>총 가맹점</td><td>9,823개</td></tr>             <tr><td>전입인구</td><td>771명</td></tr>             <tr><td>평균소득</td><td>567천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_fbdda23bbf2c462675cc0c59542484c8.setContent(html_c132baf7382afa5f74ddf2f094c015a7);
+            
+        
+
+        circle_marker_0476400b1cb95e5de48c6c9e88c37b31.bindPopup(popup_fbdda23bbf2c462675cc0c59542484c8)
+        ;
+
+        
+    
+    
+            circle_marker_0476400b1cb95e5de48c6c9e88c37b31.bindTooltip(
+                `<div>
+                     이매2동 | 주의 (38.7점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f1d575999433b188b7fd63ccb5dc077b = L.circleMarker(
+                [37.454, 127.141],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.626066520546566, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_87379472ef5f26d5bfb322e1f7184096 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_96f41040772d1b8af6070e32332ef566 = $(`<div id="html_96f41040772d1b8af6070e32332ef566" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">금광1동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>37.5</b></td></tr>             <tr><td>생존율</td><td>96.6%</td></tr>             <tr><td>유동인구</td><td>1,456명</td></tr>             <tr><td>총 가맹점</td><td>5,116개</td></tr>             <tr><td>전입인구</td><td>800명</td></tr>             <tr><td>평균소득</td><td>410천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_87379472ef5f26d5bfb322e1f7184096.setContent(html_96f41040772d1b8af6070e32332ef566);
+            
+        
+
+        circle_marker_f1d575999433b188b7fd63ccb5dc077b.bindPopup(popup_87379472ef5f26d5bfb322e1f7184096)
+        ;
+
+        
+    
+    
+            circle_marker_f1d575999433b188b7fd63ccb5dc077b.bindTooltip(
+                `<div>
+                     금광1동 | 주의 (37.5점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_794a5c8b25a19ca426c2400fcd495b54 = L.circleMarker(
+                [37.448, 127.155],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.599775072183313, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_ebe9ef13cf1218c459eaa71947aa73a6 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_3db14485f6ff67265d5fbac552229e0a = $(`<div id="html_3db14485f6ff67265d5fbac552229e0a" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">산성동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>37.3</b></td></tr>             <tr><td>생존율</td><td>96.8%</td></tr>             <tr><td>유동인구</td><td>1,438명</td></tr>             <tr><td>총 가맹점</td><td>4,824개</td></tr>             <tr><td>전입인구</td><td>920명</td></tr>             <tr><td>평균소득</td><td>397천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_ebe9ef13cf1218c459eaa71947aa73a6.setContent(html_3db14485f6ff67265d5fbac552229e0a);
+            
+        
+
+        circle_marker_794a5c8b25a19ca426c2400fcd495b54.bindPopup(popup_ebe9ef13cf1218c459eaa71947aa73a6)
+        ;
+
+        
+    
+    
+            circle_marker_794a5c8b25a19ca426c2400fcd495b54.bindTooltip(
+                `<div>
+                     산성동 | 주의 (37.3점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a19d1659de7a071d9930c0f5e60806b0 = L.circleMarker(
+                [37.369, 127.098],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.3936177247773, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_aa8a0de20e2cb9284f03e9d751dd95c0 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_8939d51192c74051c1f532752c0f2540 = $(`<div id="html_8939d51192c74051c1f532752c0f2540" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">운중동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>36.0</b></td></tr>             <tr><td>생존율</td><td>96.2%</td></tr>             <tr><td>유동인구</td><td>3,177명</td></tr>             <tr><td>총 가맹점</td><td>10,153개</td></tr>             <tr><td>전입인구</td><td>1,022명</td></tr>             <tr><td>평균소득</td><td>559천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_aa8a0de20e2cb9284f03e9d751dd95c0.setContent(html_8939d51192c74051c1f532752c0f2540);
+            
+        
+
+        circle_marker_a19d1659de7a071d9930c0f5e60806b0.bindPopup(popup_aa8a0de20e2cb9284f03e9d751dd95c0)
+        ;
+
+        
+    
+    
+            circle_marker_a19d1659de7a071d9930c0f5e60806b0.bindTooltip(
+                `<div>
+                     운중동 | 주의 (36.0점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_666ff64c661c20ec6d9f1e830d2faec2 = L.circleMarker(
+                [37.451, 127.128],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.057719040106573, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_ac174c0c2862c507a5b83240f3f06f08 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_d7ebb0b1813fa8fdad987236815b93c4 = $(`<div id="html_d7ebb0b1813fa8fdad987236815b93c4" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">창곡동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>33.7</b></td></tr>             <tr><td>생존율</td><td>96.3%</td></tr>             <tr><td>유동인구</td><td>1,486명</td></tr>             <tr><td>총 가맹점</td><td>5,021개</td></tr>             <tr><td>전입인구</td><td>1,439명</td></tr>             <tr><td>평균소득</td><td>390천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_ac174c0c2862c507a5b83240f3f06f08.setContent(html_d7ebb0b1813fa8fdad987236815b93c4);
+            
+        
+
+        circle_marker_666ff64c661c20ec6d9f1e830d2faec2.bindPopup(popup_ac174c0c2862c507a5b83240f3f06f08)
+        ;
+
+        
+    
+    
+            circle_marker_666ff64c661c20ec6d9f1e830d2faec2.bindTooltip(
+                `<div>
+                     창곡동 | 주의 (33.7점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_aef6305350a85bf807728c217ac927bd = L.circleMarker(
+                [37.442, 127.15],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.8132024095496, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_3ee8d1b26ba5d8642db9ae1bc123ff50 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_c53a047be2f0632104cceed1144348a7 = $(`<div id="html_c53a047be2f0632104cceed1144348a7" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">단대동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>32.1</b></td></tr>             <tr><td>생존율</td><td>96.4%</td></tr>             <tr><td>유동인구</td><td>1,464명</td></tr>             <tr><td>총 가맹점</td><td>4,874개</td></tr>             <tr><td>전입인구</td><td>1,148명</td></tr>             <tr><td>평균소득</td><td>352천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_3ee8d1b26ba5d8642db9ae1bc123ff50.setContent(html_c53a047be2f0632104cceed1144348a7);
+            
+        
+
+        circle_marker_aef6305350a85bf807728c217ac927bd.bindPopup(popup_3ee8d1b26ba5d8642db9ae1bc123ff50)
+        ;
+
+        
+    
+    
+            circle_marker_aef6305350a85bf807728c217ac927bd.bindTooltip(
+                `<div>
+                     단대동 | 주의 (32.1점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c79b522bde1ae0b350b672e9df3af42e = L.circleMarker(
+                [37.453, 127.142],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.76691110718015, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_634e0ecaf3128428bdc9651468a56965 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_8a49e68f84dbce73c5255fc8e4f2db18 = $(`<div id="html_8a49e68f84dbce73c5255fc8e4f2db18" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">위례동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>31.8</b></td></tr>             <tr><td>생존율</td><td>96.5%</td></tr>             <tr><td>유동인구</td><td>1,528명</td></tr>             <tr><td>총 가맹점</td><td>4,971개</td></tr>             <tr><td>전입인구</td><td>783명</td></tr>             <tr><td>평균소득</td><td>450천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_634e0ecaf3128428bdc9651468a56965.setContent(html_8a49e68f84dbce73c5255fc8e4f2db18);
+            
+        
+
+        circle_marker_c79b522bde1ae0b350b672e9df3af42e.bindPopup(popup_634e0ecaf3128428bdc9651468a56965)
+        ;
+
+        
+    
+    
+            circle_marker_c79b522bde1ae0b350b672e9df3af42e.bindTooltip(
+                `<div>
+                     위례동 | 주의 (31.8점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_91f196ad08a5bf9a2c1cf0684c8f4d6a = L.circleMarker(
+                [37.447, 127.144],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.725355699234658, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_b74ed000792f7025ff841c68b7b15301 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_c02d2fc7cd75b133ca775697aff46ae7 = $(`<div id="html_c02d2fc7cd75b133ca775697aff46ae7" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">은행1동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>31.5</b></td></tr>             <tr><td>생존율</td><td>96.7%</td></tr>             <tr><td>유동인구</td><td>1,402명</td></tr>             <tr><td>총 가맹점</td><td>4,890개</td></tr>             <tr><td>전입인구</td><td>919명</td></tr>             <tr><td>평균소득</td><td>375천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_b74ed000792f7025ff841c68b7b15301.setContent(html_c02d2fc7cd75b133ca775697aff46ae7);
+            
+        
+
+        circle_marker_91f196ad08a5bf9a2c1cf0684c8f4d6a.bindPopup(popup_b74ed000792f7025ff841c68b7b15301)
+        ;
+
+        
+    
+    
+            circle_marker_91f196ad08a5bf9a2c1cf0684c8f4d6a.bindTooltip(
+                `<div>
+                     은행1동 | 주의 (31.5점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b0f1c3fa6594df4bd929b9e847d3e2cf = L.circleMarker(
+                [37.4396, 127.1388],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.61174657619391, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_b3401b14166221c2869551bbb3eb27b3 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_f9bf8c4959ac06a1d638d408e5885776 = $(`<div id="html_f9bf8c4959ac06a1d638d408e5885776" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">신흥1동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>30.7</b></td></tr>             <tr><td>생존율</td><td>96.1%</td></tr>             <tr><td>유동인구</td><td>1,504명</td></tr>             <tr><td>총 가맹점</td><td>5,092개</td></tr>             <tr><td>전입인구</td><td>1,207명</td></tr>             <tr><td>평균소득</td><td>412천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_b3401b14166221c2869551bbb3eb27b3.setContent(html_f9bf8c4959ac06a1d638d408e5885776);
+            
+        
+
+        circle_marker_b0f1c3fa6594df4bd929b9e847d3e2cf.bindPopup(popup_b3401b14166221c2869551bbb3eb27b3)
+        ;
+
+        
+    
+    
+            circle_marker_b0f1c3fa6594df4bd929b9e847d3e2cf.bindTooltip(
+                `<div>
+                     신흥1동 | 주의 (30.7점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b4f5bdb4169a3095892e7bde8064b6ed = L.circleMarker(
+                [37.3749, 127.114],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.43914282535966, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_632ed33e6eda8e20e13aa7d8d8293042 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_ce33e7adc8fdc29265b5b7e717bb1f4a = $(`<div id="html_ce33e7adc8fdc29265b5b7e717bb1f4a" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">정자1동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>29.6</b></td></tr>             <tr><td>생존율</td><td>96.1%</td></tr>             <tr><td>유동인구</td><td>3,126명</td></tr>             <tr><td>총 가맹점</td><td>10,183개</td></tr>             <tr><td>전입인구</td><td>1,037명</td></tr>             <tr><td>평균소득</td><td>550천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_632ed33e6eda8e20e13aa7d8d8293042.setContent(html_ce33e7adc8fdc29265b5b7e717bb1f4a);
+            
+        
+
+        circle_marker_b4f5bdb4169a3095892e7bde8064b6ed.bindPopup(popup_632ed33e6eda8e20e13aa7d8d8293042)
+        ;
+
+        
+    
+    
+            circle_marker_b4f5bdb4169a3095892e7bde8064b6ed.bindTooltip(
+                `<div>
+                     정자1동 | 주의 (29.6점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bfa5ea56e61f586e87d9aa94212afa3b = L.circleMarker(
+                [37.444, 127.132],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.229094154313145, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_d9ad15e4d327e04a78b71f40adc62842 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_98ec79f9edef8a237fc47c9787ea9a61 = $(`<div id="html_98ec79f9edef8a237fc47c9787ea9a61" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">신흥3동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>28.2</b></td></tr>             <tr><td>생존율</td><td>96.6%</td></tr>             <tr><td>유동인구</td><td>1,585명</td></tr>             <tr><td>총 가맹점</td><td>5,026개</td></tr>             <tr><td>전입인구</td><td>1,060명</td></tr>             <tr><td>평균소득</td><td>353천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_d9ad15e4d327e04a78b71f40adc62842.setContent(html_98ec79f9edef8a237fc47c9787ea9a61);
+            
+        
+
+        circle_marker_bfa5ea56e61f586e87d9aa94212afa3b.bindPopup(popup_d9ad15e4d327e04a78b71f40adc62842)
+        ;
+
+        
+    
+    
+            circle_marker_bfa5ea56e61f586e87d9aa94212afa3b.bindTooltip(
+                `<div>
+                     신흥3동 | 주의 (28.2점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f350d5a5745c7344a6bff6a4028b3987 = L.circleMarker(
+                [37.4328, 127.149],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.080190061407585, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_9613e8c9da4ccab025aeb60a9868a96e = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_9627c75eb52c8ad44bf9c9e667a1e095 = $(`<div id="html_9627c75eb52c8ad44bf9c9e667a1e095" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">태평4동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>27.2</b></td></tr>             <tr><td>생존율</td><td>96.3%</td></tr>             <tr><td>유동인구</td><td>1,514명</td></tr>             <tr><td>총 가맹점</td><td>4,860개</td></tr>             <tr><td>전입인구</td><td>1,306명</td></tr>             <tr><td>평균소득</td><td>371천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_9613e8c9da4ccab025aeb60a9868a96e.setContent(html_9627c75eb52c8ad44bf9c9e667a1e095);
+            
+        
+
+        circle_marker_f350d5a5745c7344a6bff6a4028b3987.bindPopup(popup_9613e8c9da4ccab025aeb60a9868a96e)
+        ;
+
+        
+    
+    
+            circle_marker_f350d5a5745c7344a6bff6a4028b3987.bindTooltip(
+                `<div>
+                     태평4동 | 주의 (27.2점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_86a4cdb92e31fc6e74b6a809498d4bca = L.circleMarker(
+                [37.461, 127.146],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.78951504115283, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_aa0abf818053f0c668b9d6ba7e387502 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_0ddbaf8be45e21eb65281f4a1e459103 = $(`<div id="html_0ddbaf8be45e21eb65281f4a1e459103" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">여수동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>25.3</b></td></tr>             <tr><td>생존율</td><td>96.5%</td></tr>             <tr><td>유동인구</td><td>1,470명</td></tr>             <tr><td>총 가맹점</td><td>4,974개</td></tr>             <tr><td>전입인구</td><td>894명</td></tr>             <tr><td>평균소득</td><td>361천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_aa0abf818053f0c668b9d6ba7e387502.setContent(html_0ddbaf8be45e21eb65281f4a1e459103);
+            
+        
+
+        circle_marker_86a4cdb92e31fc6e74b6a809498d4bca.bindPopup(popup_aa0abf818053f0c668b9d6ba7e387502)
+        ;
+
+        
+    
+    
+            circle_marker_86a4cdb92e31fc6e74b6a809498d4bca.bindTooltip(
+                `<div>
+                     여수동 | 주의 (25.3점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fd44af5f65a0323d6409a2c6ce3615c2 = L.circleMarker(
+                [37.4575, 127.15],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.713773044911406, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_32c06ca0cd878f2dfd4d0817c3942bcc = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_dfc420ce814eddafd42c03cd56071752 = $(`<div id="html_dfc420ce814eddafd42c03cd56071752" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">상대원2동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>24.8</b></td></tr>             <tr><td>생존율</td><td>96.3%</td></tr>             <tr><td>유동인구</td><td>1,443명</td></tr>             <tr><td>총 가맹점</td><td>5,033개</td></tr>             <tr><td>전입인구</td><td>748명</td></tr>             <tr><td>평균소득</td><td>406천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_32c06ca0cd878f2dfd4d0817c3942bcc.setContent(html_dfc420ce814eddafd42c03cd56071752);
+            
+        
+
+        circle_marker_fd44af5f65a0323d6409a2c6ce3615c2.bindPopup(popup_32c06ca0cd878f2dfd4d0817c3942bcc)
+        ;
+
+        
+    
+    
+            circle_marker_fd44af5f65a0323d6409a2c6ce3615c2.bindTooltip(
+                `<div>
+                     상대원2동 | 주의 (24.8점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d3618fca4395a40909bd58d8ea1b8e11 = L.circleMarker(
+                [37.452, 127.155],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.697044798700933, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_d789a891a51264f826c78e5220b92e9f = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_d8fd8d109961f5692a2038790dc81400 = $(`<div id="html_d8fd8d109961f5692a2038790dc81400" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">하대원동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>24.6</b></td></tr>             <tr><td>생존율</td><td>96.2%</td></tr>             <tr><td>유동인구</td><td>1,493명</td></tr>             <tr><td>총 가맹점</td><td>5,116개</td></tr>             <tr><td>전입인구</td><td>665명</td></tr>             <tr><td>평균소득</td><td>376천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_d789a891a51264f826c78e5220b92e9f.setContent(html_d8fd8d109961f5692a2038790dc81400);
+            
+        
+
+        circle_marker_d3618fca4395a40909bd58d8ea1b8e11.bindPopup(popup_d789a891a51264f826c78e5220b92e9f)
+        ;
+
+        
+    
+    
+            circle_marker_d3618fca4395a40909bd58d8ea1b8e11.bindTooltip(
+                `<div>
+                     하대원동 | 주의 (24.6점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a3ceac9f191db9c2d3324339327d631d = L.circleMarker(
+                [37.4415, 127.1352],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.60187280927548, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_e7239609025efccb57ca7a00a0051bd5 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_702b77d20900b3d10aa0b960af8ba024 = $(`<div id="html_702b77d20900b3d10aa0b960af8ba024" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">신흥2동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>24.0</b></td></tr>             <tr><td>생존율</td><td>96.4%</td></tr>             <tr><td>유동인구</td><td>1,525명</td></tr>             <tr><td>총 가맹점</td><td>5,207개</td></tr>             <tr><td>전입인구</td><td>947명</td></tr>             <tr><td>평균소득</td><td>403천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_e7239609025efccb57ca7a00a0051bd5.setContent(html_702b77d20900b3d10aa0b960af8ba024);
+            
+        
+
+        circle_marker_a3ceac9f191db9c2d3324339327d631d.bindPopup(popup_e7239609025efccb57ca7a00a0051bd5)
+        ;
+
+        
+    
+    
+            circle_marker_a3ceac9f191db9c2d3324339327d631d.bindTooltip(
+                `<div>
+                     신흥2동 | 주의 (24.0점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a23703757ac82551af7b73ca2ad18951 = L.circleMarker(
+                [37.438, 127.141],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.323195694754038, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_e19a2afde825ca4ace1b312a63542a73 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_4600691149fc5f749ff60ce61bb7384b = $(`<div id="html_4600691149fc5f749ff60ce61bb7384b" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">수진1동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>22.2</b></td></tr>             <tr><td>생존율</td><td>96.2%</td></tr>             <tr><td>유동인구</td><td>1,462명</td></tr>             <tr><td>총 가맹점</td><td>4,933개</td></tr>             <tr><td>전입인구</td><td>938명</td></tr>             <tr><td>평균소득</td><td>337천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_e19a2afde825ca4ace1b312a63542a73.setContent(html_4600691149fc5f749ff60ce61bb7384b);
+            
+        
+
+        circle_marker_a23703757ac82551af7b73ca2ad18951.bindPopup(popup_e19a2afde825ca4ace1b312a63542a73)
+        ;
+
+        
+    
+    
+            circle_marker_a23703757ac82551af7b73ca2ad18951.bindTooltip(
+                `<div>
+                     수진1동 | 주의 (22.2점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_827c03cd7709a2c16a9ba84c6f9a2351 = L.circleMarker(
+                [37.4352, 127.151],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.291637006596368, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_3709a44109336c23eff6ed56fcc9a60a = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_ed2faa8f770d19ff54a0af77e4665557 = $(`<div id="html_ed2faa8f770d19ff54a0af77e4665557" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">태평2동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>21.9</b></td></tr>             <tr><td>생존율</td><td>96.5%</td></tr>             <tr><td>유동인구</td><td>1,389명</td></tr>             <tr><td>총 가맹점</td><td>5,175개</td></tr>             <tr><td>전입인구</td><td>884명</td></tr>             <tr><td>평균소득</td><td>379천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_3709a44109336c23eff6ed56fcc9a60a.setContent(html_ed2faa8f770d19ff54a0af77e4665557);
+            
+        
+
+        circle_marker_827c03cd7709a2c16a9ba84c6f9a2351.bindPopup(popup_3709a44109336c23eff6ed56fcc9a60a)
+        ;
+
+        
+    
+    
+            circle_marker_827c03cd7709a2c16a9ba84c6f9a2351.bindTooltip(
+                `<div>
+                     태평2동 | 주의 (21.9점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_32d1d99aa855c3fc32977f0f6c7f6764 = L.circleMarker(
+                [37.4595, 127.153],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.26501893243476, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_a2e0104646e0077dc14e749193cc7c75 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_255af60d48912c46a554d034770e675d = $(`<div id="html_255af60d48912c46a554d034770e675d" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">상대원3동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>21.8</b></td></tr>             <tr><td>생존율</td><td>96.3%</td></tr>             <tr><td>유동인구</td><td>1,522명</td></tr>             <tr><td>총 가맹점</td><td>4,871개</td></tr>             <tr><td>전입인구</td><td>584명</td></tr>             <tr><td>평균소득</td><td>378천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_a2e0104646e0077dc14e749193cc7c75.setContent(html_255af60d48912c46a554d034770e675d);
+            
+        
+
+        circle_marker_32d1d99aa855c3fc32977f0f6c7f6764.bindPopup(popup_a2e0104646e0077dc14e749193cc7c75)
+        ;
+
+        
+    
+    
+            circle_marker_32d1d99aa855c3fc32977f0f6c7f6764.bindTooltip(
+                `<div>
+                     상대원3동 | 주의 (21.8점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3d3573e791c57281b9f6f613a9ac2d16 = L.circleMarker(
+                [37.46, 127.142],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.202149563049733, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_cf9b6fd661edaa2f5a12db85ac3fd07e = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_f6442f7c8d366cedbe7bb62d36b5351b = $(`<div id="html_f6442f7c8d366cedbe7bb62d36b5351b" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">도촌동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>21.3</b></td></tr>             <tr><td>생존율</td><td>96.1%</td></tr>             <tr><td>유동인구</td><td>1,550명</td></tr>             <tr><td>총 가맹점</td><td>5,198개</td></tr>             <tr><td>전입인구</td><td>918명</td></tr>             <tr><td>평균소득</td><td>379천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_cf9b6fd661edaa2f5a12db85ac3fd07e.setContent(html_f6442f7c8d366cedbe7bb62d36b5351b);
+            
+        
+
+        circle_marker_3d3573e791c57281b9f6f613a9ac2d16.bindPopup(popup_cf9b6fd661edaa2f5a12db85ac3fd07e)
+        ;
+
+        
+    
+    
+            circle_marker_3d3573e791c57281b9f6f613a9ac2d16.bindTooltip(
+                `<div>
+                     도촌동 | 주의 (21.3점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1e57935f6103d7a44b78bd731a36c0f8 = L.circleMarker(
+                [37.4555, 127.144],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.158092734810218, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_30e87c504409c16a2567521f45ae8801 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_8af68156868e9db17423bef7a4785a51 = $(`<div id="html_8af68156868e9db17423bef7a4785a51" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">금광2동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>21.1</b></td></tr>             <tr><td>생존율</td><td>96.4%</td></tr>             <tr><td>유동인구</td><td>1,396명</td></tr>             <tr><td>총 가맹점</td><td>4,954개</td></tr>             <tr><td>전입인구</td><td>634명</td></tr>             <tr><td>평균소득</td><td>369천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_30e87c504409c16a2567521f45ae8801.setContent(html_8af68156868e9db17423bef7a4785a51);
+            
+        
+
+        circle_marker_1e57935f6103d7a44b78bd731a36c0f8.bindPopup(popup_30e87c504409c16a2567521f45ae8801)
+        ;
+
+        
+    
+    
+            circle_marker_1e57935f6103d7a44b78bd731a36c0f8.bindTooltip(
+                `<div>
+                     금광2동 | 주의 (21.1점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_df430dfde2fd3eaa5822233b8302f9c3 = L.circleMarker(
+                [37.3785, 127.123],
+                {"bubblingMouseEvents": true, "color": "#EF9F27", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF9F27", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.152424895817425, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_586c06a511b89c71f706586dcde648c6 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_c8d17386b256859f8c54d7ba69e2df02 = $(`<div id="html_c8d17386b256859f8c54d7ba69e2df02" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">수내3동</b>           <span style="float:right;background:#EF9F27;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">주의</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>21.0</b></td></tr>             <tr><td>생존율</td><td>96.3%</td></tr>             <tr><td>유동인구</td><td>2,954명</td></tr>             <tr><td>총 가맹점</td><td>10,105개</td></tr>             <tr><td>전입인구</td><td>347명</td></tr>             <tr><td>평균소득</td><td>558천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_586c06a511b89c71f706586dcde648c6.setContent(html_c8d17386b256859f8c54d7ba69e2df02);
+            
+        
+
+        circle_marker_df430dfde2fd3eaa5822233b8302f9c3.bindPopup(popup_586c06a511b89c71f706586dcde648c6)
+        ;
+
+        
+    
+    
+            circle_marker_df430dfde2fd3eaa5822233b8302f9c3.bindTooltip(
+                `<div>
+                     수내3동 | 주의 (21.0점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a11fe68e7a06c53353cb53aa62f31ccf = L.circleMarker(
+                [37.387, 127.123],
+                {"bubblingMouseEvents": true, "color": "#E24B4A", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#E24B4A", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.83762037652923, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_3bef6259d0d68ab9505d7c14321f7a71 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_d0284cf75421031ff01c689c2eb8b891 = $(`<div id="html_d0284cf75421031ff01c689c2eb8b891" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">분당동</b>           <span style="float:right;background:#E24B4A;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">위험</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>18.9</b></td></tr>             <tr><td>생존율</td><td>96.0%</td></tr>             <tr><td>유동인구</td><td>2,988명</td></tr>             <tr><td>총 가맹점</td><td>9,782개</td></tr>             <tr><td>전입인구</td><td>814명</td></tr>             <tr><td>평균소득</td><td>508천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_3bef6259d0d68ab9505d7c14321f7a71.setContent(html_d0284cf75421031ff01c689c2eb8b891);
+            
+        
+
+        circle_marker_a11fe68e7a06c53353cb53aa62f31ccf.bindPopup(popup_3bef6259d0d68ab9505d7c14321f7a71)
+        ;
+
+        
+    
+    
+            circle_marker_a11fe68e7a06c53353cb53aa62f31ccf.bindTooltip(
+                `<div>
+                     분당동 | 위험 (18.9점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_93ebd7b31805ab971bc95f88f112a9b7 = L.circleMarker(
+                [37.4368, 127.147],
+                {"bubblingMouseEvents": true, "color": "#E24B4A", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#E24B4A", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.644949769931685, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_3c8e4af38e944dd148db4e83aede9377 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_0bd37dfef2f110057d5bc51f45ed1594 = $(`<div id="html_0bd37dfef2f110057d5bc51f45ed1594" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">태평1동</b>           <span style="float:right;background:#E24B4A;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">위험</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>17.6</b></td></tr>             <tr><td>생존율</td><td>96.4%</td></tr>             <tr><td>유동인구</td><td>1,467명</td></tr>             <tr><td>총 가맹점</td><td>4,943개</td></tr>             <tr><td>전입인구</td><td>784명</td></tr>             <tr><td>평균소득</td><td>379천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_3c8e4af38e944dd148db4e83aede9377.setContent(html_0bd37dfef2f110057d5bc51f45ed1594);
+            
+        
+
+        circle_marker_93ebd7b31805ab971bc95f88f112a9b7.bindPopup(popup_3c8e4af38e944dd148db4e83aede9377)
+        ;
+
+        
+    
+    
+            circle_marker_93ebd7b31805ab971bc95f88f112a9b7.bindTooltip(
+                `<div>
+                     태평1동 | 위험 (17.6점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_22f291a48dce321051dcfc29f57a2878 = L.circleMarker(
+                [37.449, 127.146],
+                {"bubblingMouseEvents": true, "color": "#E24B4A", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#E24B4A", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.528719905397633, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_90c1a378a718aca50f66df3a6fc1c240 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_720a768a5da825b6e698ba3fdf1e11b7 = $(`<div id="html_720a768a5da825b6e698ba3fdf1e11b7" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">은행2동</b>           <span style="float:right;background:#E24B4A;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">위험</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>16.9</b></td></tr>             <tr><td>생존율</td><td>96.3%</td></tr>             <tr><td>유동인구</td><td>1,468명</td></tr>             <tr><td>총 가맹점</td><td>4,969개</td></tr>             <tr><td>전입인구</td><td>723명</td></tr>             <tr><td>평균소득</td><td>357천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_90c1a378a718aca50f66df3a6fc1c240.setContent(html_720a768a5da825b6e698ba3fdf1e11b7);
+            
+        
+
+        circle_marker_22f291a48dce321051dcfc29f57a2878.bindPopup(popup_90c1a378a718aca50f66df3a6fc1c240)
+        ;
+
+        
+    
+    
+            circle_marker_22f291a48dce321051dcfc29f57a2878.bindTooltip(
+                `<div>
+                     은행2동 | 위험 (16.9점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ac84d27d05cfa4ab998ba5d969390c10 = L.circleMarker(
+                [37.45, 127.139],
+                {"bubblingMouseEvents": true, "color": "#E24B4A", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#E24B4A", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.475979545480627, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_6c8536745340e85f81be15a5d0df9ef1 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_b02dc6e75d97e1a1627efbcd7b459681 = $(`<div id="html_b02dc6e75d97e1a1627efbcd7b459681" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">중앙동</b>           <span style="float:right;background:#E24B4A;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">위험</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>16.5</b></td></tr>             <tr><td>생존율</td><td>96.1%</td></tr>             <tr><td>유동인구</td><td>1,543명</td></tr>             <tr><td>총 가맹점</td><td>5,005개</td></tr>             <tr><td>전입인구</td><td>933명</td></tr>             <tr><td>평균소득</td><td>375천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_6c8536745340e85f81be15a5d0df9ef1.setContent(html_b02dc6e75d97e1a1627efbcd7b459681);
+            
+        
+
+        circle_marker_ac84d27d05cfa4ab998ba5d969390c10.bindPopup(popup_6c8536745340e85f81be15a5d0df9ef1)
+        ;
+
+        
+    
+    
+            circle_marker_ac84d27d05cfa4ab998ba5d969390c10.bindTooltip(
+                `<div>
+                     중앙동 | 위험 (16.5점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_622a30beb6fa95c8703126c0889a9f03 = L.circleMarker(
+                [37.456, 127.147],
+                {"bubblingMouseEvents": true, "color": "#E24B4A", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#E24B4A", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.638996057438908, "stroke": true, "weight": 1.5}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+        
+    
+        var popup_2736a86cae9bfe830347c2b16eda888f = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_4fcb03a83f6698607feddef445bce088 = $(`<div id="html_4fcb03a83f6698607feddef445bce088" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Malgun Gothic,sans-serif;min-width:180px">           <b style="font-size:14px">상대원1동</b>           <span style="float:right;background:#E24B4A;color:white;                        padding:2px 8px;border-radius:12px;font-size:12px">위험</span>           <hr style="margin:6px 0">           <table style="width:100%;font-size:12px">             <tr><td>활력 지수</td><td><b>10.9</b></td></tr>             <tr><td>생존율</td><td>96.1%</td></tr>             <tr><td>유동인구</td><td>1,433명</td></tr>             <tr><td>총 가맹점</td><td>5,102개</td></tr>             <tr><td>전입인구</td><td>729명</td></tr>             <tr><td>평균소득</td><td>396천원</td></tr>           </table>         </div>         </div>`)[0];
+                popup_2736a86cae9bfe830347c2b16eda888f.setContent(html_4fcb03a83f6698607feddef445bce088);
+            
+        
+
+        circle_marker_622a30beb6fa95c8703126c0889a9f03.bindPopup(popup_2736a86cae9bfe830347c2b16eda888f)
+        ;
+
+        
+    
+    
+            circle_marker_622a30beb6fa95c8703126c0889a9f03.bindTooltip(
+                `<div>
+                     상대원1동 | 위험 (10.9점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var feature_group_5550258cf9f97f96ee6df38700c2ebc8 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var heat_map_e73ac948889b6a9edfb565aef35505fb = L.heatLayer(
+                [[37.386, 127.1148, 0.24492427230212585], [37.3815, 127.1193, 0.2772689386867273], [37.378, 127.108, 0.348488325434554], [37.3998, 127.1068, 0.35851520517061247], [37.3921, 127.1105, 0.376644908632603], [37.38, 127.121, 0.40681066468815064], [37.4088, 127.131, 0.42246334294998944], [37.4072, 127.1278, 0.4288271805966372], [37.449, 127.13, 0.472512300668321], [37.377, 127.116, 0.5083708149297571], [37.383, 127.126, 0.5156068742642661], [37.3755, 127.118, 0.5396643523358469], [37.452, 127.136, 0.5487908441221551], [37.375, 127.126, 0.5593183870380994], [37.436, 127.143, 0.5626474677433733], [37.434, 127.1545, 0.5690461143384317], [37.3845, 127.1168, 0.5864881828831203], [37.3978, 127.113, 0.596840338453854], [37.377, 127.124, 0.5977148742991836], [37.4052, 127.131, 0.60251784325061], [37.446, 127.148, 0.6042817320266682], [37.396, 127.111, 0.6125605013423506], [37.454, 127.141, 0.6249288986302289], [37.448, 127.155, 0.6266816618544458], [37.369, 127.098, 0.6404254850148464], [37.451, 127.128, 0.6628187306595618], [37.442, 127.15, 0.6791198393633598], [37.453, 127.142, 0.6822059261879901], [37.447, 127.144, 0.6849762867176895], [37.4396, 127.1388, 0.6925502282537395], [37.3749, 127.114, 0.7040571449760228], [37.444, 127.132, 0.7180603897124569], [37.4328, 127.149, 0.7279873292394942], [37.461, 127.146, 0.7473656639231447], [37.4575, 127.15, 0.7524151303392395], [37.452, 127.155, 0.7535303467532712], [37.4415, 127.1352, 0.7598751460483012], [37.438, 127.141, 0.7784536203497308], [37.4352, 127.151, 0.7805575328935755], [37.4595, 127.153, 0.782332071171016], [37.46, 127.142, 0.7865233624633511], [37.4555, 127.144, 0.7894604843459854], [37.3785, 127.123, 0.7898383402788383], [37.387, 127.123, 0.8108253082313847], [37.4368, 127.147, 0.8236700153378876], [37.449, 127.146, 0.831418672973491], [37.45, 127.139, 0.8349346969679583], [37.456, 127.147, 0.8907335961707394]],
+                {
+  "minOpacity": 0.2,
+  "maxZoom": 18,
+  "radius": 30,
+  "blur": 20,
+  "gradient": {
+  0.2: "#5DCAA5",
+  0.5: "#FAC775",
+  0.8: "#EF9F27",
+  1.0: "#E24B4A",
+},
+}
+            );
+        
+    
+            heat_map_e73ac948889b6a9edfb565aef35505fb.addTo(feature_group_5550258cf9f97f96ee6df38700c2ebc8);
+        
+    
+            var layer_control_9808f4b2b809776b586b5bad8eb514c2_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_d561b385f9ddedf19380be3a617d89fd,
+                },
+                overlays :  {
+                    "\uc704\ud5d8 \ud788\ud2b8\ub9f5" : feature_group_5550258cf9f97f96ee6df38700c2ebc8,
+                },
+            };
+            let layer_control_9808f4b2b809776b586b5bad8eb514c2 = L.control.layers(
+                layer_control_9808f4b2b809776b586b5bad8eb514c2_layers.base_layers,
+                layer_control_9808f4b2b809776b586b5bad8eb514c2_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_1a8504d0082d0430871307e734ebd9a2);
+
+        
+</script>
+</html>
